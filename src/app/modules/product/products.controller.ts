@@ -15,7 +15,24 @@ const createNewProduct = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(500).json({
       success: false,
-      message: error.massage || 'something  went wring',
+      massage: error.massage || 'something  went wring',
+      error: error,
+    });
+  }
+};
+
+const getAllProduct = async (req: Request, res: Response) => {
+  try {
+    const result = await ProductsServices.getAllProductFomDb();
+    res.status(200).json({
+      success: true,
+      massage: 'All products retrieved successfully. ',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      massage: error.massage || 'something went wring',
       error: error,
     });
   }
@@ -23,4 +40,5 @@ const createNewProduct = async (req: Request, res: Response) => {
 
 export const ProductController = {
   createNewProduct,
+  getAllProduct,
 };

@@ -7,8 +7,12 @@ const createProductDB = async (productData: TProduct) => {
   return result;
 };
 
-const product;
+const getAllProductFomDb = async () => {
+  const result = await Product.find();
+  return result;
+};
 
 export const ProductsServices = {
   createProductDB,
+  getAllProductFomDb,
 };
