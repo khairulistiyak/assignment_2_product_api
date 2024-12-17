@@ -14,7 +14,7 @@ const createNewProduct = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     res.status(500).json({
-      success: false,
+      success: false .,
       massage: error.massage || 'something  went wring',
       error: error,
     });
@@ -55,9 +55,31 @@ const getASingleProduct = async (req: Request, res: Response) => {
     });
   }
 };
+const updateASingleProduct = async (req: Request, res: Response) => {
+  try {
+    const productId = req.params.productId;
+    const updatedProduct = req.body;
+    const result = await ProductsServices.updateASingleProductFromDb(
+      productId,
+      updatedProduct,
+    );
+    res.status(200).json({
+      success: true,
+      massage: 'Product updated successfully!',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      massage: error.massage || 'something went wring',
+      error: error,
+    });
+  }
+};
 
 export const ProductController = {
   createNewProduct,
   getAllProduct,
   getASingleProduct,
+  updateASingleProduct,
 };
