@@ -14,7 +14,7 @@ const createNewProduct = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     res.status(500).json({
-      success: false .,
+      success: false,
       massage: error.massage || 'something  went wring',
       error: error,
     });
@@ -77,9 +77,28 @@ const updateASingleProduct = async (req: Request, res: Response) => {
   }
 };
 
+const deleteProduct = async (req: Request, res: Response) => {
+  try {
+    const productId = req.params.productId;
+    const result = await ProductsServices.singleProductDeleteDb(productId);
+    res.status(200).json({
+      success: true,
+      massage: 'Product Delete successfully!',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      massage: error.massage || 'something went wring',
+      error: error,
+    });
+  }
+};
+
 export const ProductController = {
   createNewProduct,
   getAllProduct,
   getASingleProduct,
   updateASingleProduct,
+  deleteProduct,
 };
