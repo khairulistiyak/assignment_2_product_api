@@ -95,10 +95,42 @@ const deleteProduct = async (req: Request, res: Response) => {
   }
 };
 
+// ***************************
+
+//  plz create a global error
+
+// const searchProduct = async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     const { searchTerm } = req.query;
+
+//     // Validate `searchTerm`
+//     if (typeof searchTerm !== 'string') {
+//       return res.status(400).json({
+//         success: false,
+//         message: 'Search term is required and must be a string.',
+//       });
+//     }
+
+//     // Fetch data from the service
+//     const result = await ProductsServices.searchProductFromDb(searchTerm);
+
+//     return res.status(200).json({
+//       success: true,
+//       message: `Products matching '${searchTerm}' fetched successfully.`,
+//       data: result,
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+// *******************
+
 export const ProductController = {
   createNewProduct,
   getAllProduct,
   getASingleProduct,
   updateASingleProduct,
   deleteProduct,
+  // searchProduct,
 };

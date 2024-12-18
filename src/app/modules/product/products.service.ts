@@ -42,10 +42,21 @@ const singleProductDeleteDb = async (_id: string) => {
   return result;
 };
 
+const searchProductFromDb = async (searchTerm: string) => {
+  const result = await Product.find({
+    $or: [
+      { name: { $regex: searchTerm, $options: 'i' } },
+      { description: { $regex: searchTerm, $options: 'i' } },
+    ],
+  });
+  return result;
+};
+
 export const ProductsServices = {
   createProductDB,
   getAllProductFomDb,
   getASingleProductFromDb,
   updateASingleProductFromDb,
   singleProductDeleteDb,
+  searchProductFromDb,
 };
