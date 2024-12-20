@@ -12,6 +12,25 @@ const createOrderDb = async (orderData: TOrder) => {
   return order;
 };
 
+const getAllOrderFromDb = async () => {
+  const result = Order.find();
+  return result;
+};
+
+// const getOrdersByEmailDb = async (email: string) => {
+//   const result = await Order.find({ email: { $eq: email } });
+//   return result;
+// };
+const getOrdersByEmailDb = async (email: string) => {
+  const result = await Order.find({
+    email: { $regex: `^${email}$`, $options: 'i' },
+  });
+
+  return result;
+};
+
 export const orderService = {
   createOrderDb,
+  getAllOrderFromDb,
+  getOrdersByEmailDb,
 };
