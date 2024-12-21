@@ -22,10 +22,7 @@ const getAllOrderFromDb = async () => {
 //   return result;
 // };
 const getOrdersByEmailDb = async (email: string) => {
-  const result = await Order.find({
-    email: { $regex: `^${email}$`, $options: 'i' },
-  });
-
+  const result = await Order.find(email ? { email } : {});
   return result;
 };
 

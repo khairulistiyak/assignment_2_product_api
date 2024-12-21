@@ -41,17 +41,7 @@ const getAllOrder = async (req: Request, res: Response) => {
 const getOrdersByEmail = async (req: Request, res: Response) => {
   try {
     const email = req.query.email as string;
-    console.log(email);
-
-    // if (!email) {
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: 'Email query parameter is required!',
-    //   });
-    // }
-
     const result = await orderService.getOrdersByEmailDb(email);
-
     res.status(200).json({
       success: true,
       message: `Orders fetched successfully for user email: ${email}`,
