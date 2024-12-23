@@ -8,4 +8,8 @@ const orderSchema = new Schema<TOrder>({
   quantity: { type: Number, required: true },
 });
 
+orderSchema.pre('save', function () {
+  console.log(this.quantity);
+});
+
 export const Order = model<TOrder>('Order', orderSchema);

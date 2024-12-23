@@ -32,7 +32,7 @@ const getAllProduct = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(500).json({
       success: false,
-      massage: error.massage || 'something went wring',
+      massage: error.massage || 'something went wring!!!!!!!!!',
       error: error,
     });
   }
@@ -97,11 +97,10 @@ const deleteProduct = async (req: Request, res: Response) => {
 
 // ***************************
 
-//  plz create a global error
-
 const searchProducts = async (req: Request, res: Response) => {
   try {
     const searchTerm = req.query.searchTerm as string;
+
     const result = await ProductsServices.searchProductFromDb(searchTerm);
     res.status(200).json({
       success: true,

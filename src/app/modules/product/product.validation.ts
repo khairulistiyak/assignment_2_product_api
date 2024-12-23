@@ -1,6 +1,4 @@
 import { z } from 'zod';
-
-// Zod schema for TProduct
 const ZodProductValidation = z.object({
   name: z.string(),
   description: z.string(),
