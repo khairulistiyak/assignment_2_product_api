@@ -100,7 +100,6 @@ const deleteProduct = async (req: Request, res: Response) => {
 const searchProducts = async (req: Request, res: Response) => {
   try {
     const searchTerm = req.query.searchTerm as string;
-
     const result = await ProductsServices.searchProductFromDb(searchTerm);
     res.status(200).json({
       success: true,
