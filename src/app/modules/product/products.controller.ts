@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { ProductsServices } from './products.service';
 import ZodProductValidation from './product.validation';
 

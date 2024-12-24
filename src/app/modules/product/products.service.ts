@@ -43,10 +43,11 @@ const singleProductDeleteDb = async (_id: string) => {
 };
 
 const searchProductFromDb = async (searchTerm: string) => {
+  const search = searchTerm || '';
   const result = await Product.find({
     $or: [
-      { name: { $regex: searchTerm, $options: 'i' } },
-      { description: { $regex: searchTerm, $options: 'i' } },
+      { name: { $regex: search, $options: 'i' } },
+      { description: { $regex: search, $options: 'i' } },
     ],
   });
   return result;
