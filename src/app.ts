@@ -7,9 +7,13 @@ const app: Application = express();
 // parser
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'));
 
 //  application  routes
 app.use('/api', ProductRoute);
 app.use('/api', OrderRouter);
+app.get('/', (req, res) => {
+  res.send('assignment 2 product api run');
+});
 
 export default app;

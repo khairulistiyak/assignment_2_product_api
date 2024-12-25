@@ -11,7 +11,11 @@ const app = (0, express_1.default)();
 // parser
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
+app.use(express_1.default.static('public'));
 //  application  routes
 app.use('/api', product_route_1.ProductRoute);
 app.use('/api', order_route_1.OrderRouter);
+app.get('/', (req, res) => {
+    res.send('assignment 2 product api run');
+});
 exports.default = app;
