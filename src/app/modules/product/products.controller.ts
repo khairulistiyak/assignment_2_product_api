@@ -106,7 +106,7 @@ const searchProducts = async (req: Request, res: Response) => {
       message: `Products matching fetched successfully.`,
       data: result,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({
       success: false,
       massage: error.massage || 'something went wring',
