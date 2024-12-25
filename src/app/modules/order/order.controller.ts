@@ -5,11 +5,6 @@ import { orderValidation } from './order.validation';
 const createOrder = async (req: Request, res: Response) => {
   try {
     const order = req.body;
-    // const productUpdate = Product.findOne(order.productId);
-
-    // if (order === productUpdate) {
-    //   console.log('ok is ont ');
-    // }
 
     const validationOrderData = orderValidation.parse(order);
     const result = await orderService.createOrderDb(validationOrderData);

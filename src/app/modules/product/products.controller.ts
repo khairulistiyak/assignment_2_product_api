@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { ProductsServices } from './products.service';
 import ZodProductValidation from './product.validation';
 
@@ -9,7 +9,7 @@ const createNewProduct = async (req: Request, res: Response) => {
     const result = await ProductsServices.createProductDB(validationParser);
     res.status(200).json({
       success: true,
-      massage: 'product created is success fully',
+      massage: 'product created is successfully',
       data: result,
     });
   } catch (error: any) {

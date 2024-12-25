@@ -1,23 +1,22 @@
 import { Schema, model } from 'mongoose';
 import { TProduct } from './product.interface';
 
-const productSchema = new Schema<TProduct>({
+const productSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   price: { type: Number, required: true },
-  category: {
-    type: String,
-    required: true,
-  },
-
+  category: { type: String, required: true },
   tags: { type: [String], required: true },
   variants: [
     {
-      color: { type: String, required: true },
+      type: { type: String, required: true },
       value: { type: String, required: true },
     },
   ],
-  inventory: { quantity: { type: Number }, inStock: { type: Boolean } },
+  inventory: {
+    quantity: { type: Number, required: true },
+    inStock: { type: Boolean, required: true },
+  },
 });
 
 export const Product = model<TProduct>('Product', productSchema);
